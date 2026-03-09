@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gala Homme en Action 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --navy: #0A0F1E;
+    --navy-mid: #111828;
+    --navy-light: #1A2540;
+    --cream: #F5EDD8;
+    --white: #FFFFFF;
+    --text-muted: #9CA3AF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* PAGES */
+  .page {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+  }
+  .page.active { display: block; }
+
+  /* BG OVERLAYS */
+  .bg-gala {
+    position: fixed;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,15,30,0.55) 0%, rgba(10,15,30,0.3) 40%, rgba(10,15,30,0.75) 100%),
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 12px 28px;
+    background: linear-gradient(180deg, rgba(6,9,20,0.98) 0%, rgba(8,12,25,0.93) 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    backdrop-filter: blur(16px);
+    gap: 10px;
+  }
+
+  .nav-logo {
+    width: 68px; height: 68px;
+    border-radius: 14px;
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    margin-right: 14px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Base button — dark glass pill matching screenshot */
+  .nav-btn {
+    position: relative;
+    background: linear-gradient(160deg, rgba(40,35,25,0.75) 0%, rgba(20,18,12,0.85) 100%);
+    border: 1px solid rgba(160,130,60,0.45);
+    color: #D4BC7A;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 10px 26px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    box-shadow:
+      inset 0 1px 0 rgba(255,220,120,0.08),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  /* Subtle inner shine layer */
+  .nav-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,220,100,0.06) 0%, transparent 60%);
+    border-radius: 10px;
+    pointer-events: none;
+  }
+
+  /* Glow sweep on hover */
+  .nav-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,215,100,0.15), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.45s ease;
+    pointer-events: none;
+  }
+  .nav-btn:hover::after { left: 160%; }
+
+  .nav-btn:hover {
+    background: linear-gradient(160deg, rgba(80,62,20,0.85) 0%, rgba(45,35,10,0.9) 100%);
+    border-color: rgba(201,168,76,0.85);
+    color: #F0D898;
+    box-shadow:
+      inset 0 1px 0 rgba(255,230,140,0.15),
+      0 0 14px rgba(201,168,76,0.25),
+      0 0 28px rgba(201,168,76,0.1),
+      0 4px 12px rgba(0,0,0,0.5);
+    text-shadow: 0 0 12px rgba(255,210,80,0.5), 0 1px 3px rgba(0,0,0,0.6);
+    transform: translateY(-1px);
+  }
+
+  /* ACTIVE state — golden glow like "Accueil" in screenshot */
+  .nav-btn.active {
+    background: linear-gradient(160deg, rgba(100,75,15,0.9) 0%, rgba(60,45,8,0.95) 100%);
+    border-color: rgba(201,168,76,0.9);
+    border-width: 1.5px;
+    color: #F5E098;
+    box-shadow:
+      inset 0 1px 0 rgba(255,230,140,0.2),
+      0 0 18px rgba(201,168,76,0.35),
+      0 0 40px rgba(201,168,76,0.12),
+      0 4px 14px rgba(0,0,0,0.5);
+    text-shadow: 0 0 14px rgba(255,210,80,0.6), 0 1px 3px rgba(0,0,0,0.5);
+  }
+
+  /* CTA button — gold fill */
+  .nav-cta {
+    position: relative;
+    background: linear-gradient(160deg, #C9A84C 0%, #8B6914 50%, #A07820 100%);
+    border: 1.5px solid rgba(232,201,122,0.6);
+    color: #1A1200;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 10px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.15);
+    box-shadow:
+      inset 0 1px 0 rgba(255,245,180,0.25),
+      0 0 14px rgba(201,168,76,0.3),
+      0 4px 12px rgba(0,0,0,0.4);
+  }
+  .nav-cta::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.45s ease;
+    pointer-events: none;
+  }
+  .nav-cta:hover::after { left: 160%; }
+  .nav-cta:hover {
+    background: linear-gradient(160deg, #E8C97A 0%, #C9A84C 60%, #A07820 100%);
+    border-color: rgba(255,230,140,0.8);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,200,0.3),
+      0 0 20px rgba(201,168,76,0.5),
+      0 0 40px rgba(201,168,76,0.2),
+      0 4px 14px rgba(0,0,0,0.4);
+    transform: translateY(-1px);
+  }
+
+  /* ===== PAGE 1 - ACCUEIL ===== */
+  #page-accueil {
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  #page-accueil.active { display: flex; }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,15,30,0.35) 0%, rgba(10,15,30,0.1) 40%, rgba(10,15,30,0.75) 100%),
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 120px 20px 60px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .hero-gala-word {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(70px, 10vw, 130px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold-light);
+    line-height: 0.9;
+    text-shadow: 0 0 80px rgba(201,168,76,0.4);
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(32px, 5vw, 62px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+    margin-bottom: 10px;
+  }
+
+  .hero-edition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 12px 0 8px;
+  }
+  .hero-edition-line {
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .hero-edition-line.right {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .hero-edition span {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 36px);
+    font-style: italic;
+    color: var(--cream);
+    margin: 14px 0 28px;
+    opacity: 0.95;
+  }
+
+  /* COUNTDOWN */
+  .countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 3vw, 30px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 36px;
+    letter-spacing: 0.05em;
+  }
+  .countdown .num { color: var(--gold-light); }
+  .countdown .label {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(9px, 1.2vw, 14px);
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-right: 8px;
+  }
+  .countdown .sep { color: var(--gold); }
+
+  .hero-cta {
+    background: linear-gradient(135deg, #8B6914, #C9A84C, #E8C97A);
+    color: var(--navy);
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 20px 60px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    box-shadow: 0 8px 40px rgba(201,168,76,0.35);
+    margin-bottom: 50px;
+  }
+  .hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 50px rgba(201,168,76,0.55);
+  }
+
+  /* BOTTOM CARDS */
+  .hero-cards {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    padding: 0 20px 40px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-card {
+    background: rgba(10,15,30,0.82);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px;
+    padding: 24px 28px;
+    flex: 1;
+    min-width: 240px;
+    max-width: 340px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .hero-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+    transform: translateY(-3px);
+  }
+
+  .hero-card-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .hero-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 5px;
+  }
+
+  .hero-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ===== PAGE 2 - À PROPOS ===== */
+  #page-apropos {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+  }
+  #page-apropos.active { display: block; }
+
+  .apropos-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,15,30,0.65) 0%, rgba(10,15,30,0.5) 50%, rgba(10,15,30,0.9) 100%),
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    z-index: 0;
+  }
+
+  .apropos-content {
+    position: relative;
+    z-index: 10;
+    padding: 120px 60px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 600;
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 0 2px 30px rgba(201,168,76,0.3);
+  }
+
+  .apropos-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 60px;
+  }
+
+  .apropos-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.85;
+    color: var(--cream);
+  }
+  .apropos-text strong {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  .apropos-img-wrap {
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .apropos-img-wrap img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    filter: sepia(20%) saturate(1.1);
+  }
+  .apropos-img-caption {
+    background: rgba(10,15,30,0.9);
+    padding: 10px 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold);
+    text-align: center;
+  }
+
+  .section-title-gold {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .valeurs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 50px;
+  }
+
+  .valeur-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .valeur-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .valeur-item p { font-size: 14px; color: var(--cream); line-height: 1.5; }
+  .valeur-item strong { color: var(--gold-light); }
+
+  .partenaires-section {
+    text-align: center;
+  }
+
+  .partenaires-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .partner-banner {
+    width: 100%;
+    max-width: 900px;
+    margin: 16px auto 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .partner-banner img {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+    background: rgba(10,15,30,0.7);
+  }
+
+  .footer-bar {
+    text-align: center;
+    padding: 18px;
+    font-size: 11px;
+    color: rgba(201,168,76,0.5);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    letter-spacing: 0.05em;
+    margin-top: 30px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ===== PAGE 3 - PROGRAMME ===== */
+  #page-programme {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+  }
+  #page-programme.active { display: block; }
+
+  .programme-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(8,12,25,0.72) 0%, rgba(8,12,25,0.55) 50%, rgba(8,12,25,0.92) 100%),
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    z-index: 0;
+  }
+
+  .programme-content {
+    position: relative;
+    z-index: 10;
+    padding: 120px 60px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .timeline {
+    position: relative;
+    margin-bottom: 60px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 130px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 0;
+    margin-bottom: 44px;
+    align-items: flex-start;
+  }
+
+  .timeline-time {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--gold-light);
+    width: 100px;
+    flex-shrink: 0;
+    text-align: right;
+    padding-top: 3px;
+  }
+
+  .timeline-dash {
+    width: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10px;
+    position: relative;
+  }
+  .timeline-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--gold-light);
+    box-shadow: 0 0 12px rgba(201,168,76,0.6);
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline-body {
+    flex: 1;
+    padding-left: 16px;
+  }
+
+  .timeline-event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .timeline-event-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--cream);
+    line-height: 1.65;
+    opacity: 0.88;
+    max-width: 580px;
+  }
+
+  .programme-img {
+    float: right;
+    margin: -20px 0 20px 40px;
+    width: 280px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .programme-img img {
+    width: 100%; height: 220px;
+    object-fit: cover;
+    filter: sepia(15%) saturate(1.1);
+  }
+
+  /* ===== PAGE 4 - BILLETTERIE ===== */
+  #page-billetterie {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+  }
+  #page-billetterie.active { display: block; }
+
+  .billet-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,15,30,0.65) 0%, rgba(10,15,30,0.45) 50%, rgba(10,15,30,0.88) 100%),
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    z-index: 0;
+  }
+
+  .billet-content {
+    position: relative;
+    z-index: 10;
+    padding: 120px 40px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .billet-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 28px;
+    opacity: 0.9;
+  }
+
+  /* MINI COUNTDOWN BILLETTERIE */
+  .mini-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 44px;
+  }
+
+  .mini-cd-block {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    padding: 14px 22px;
+    min-width: 90px;
+  }
+  .mini-cd-num {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+  .mini-cd-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* TICKET CARDS */
+  .tickets-grid {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+
+  .ticket-card {
+    background:
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    border: 1px solid rgba(160,128,50,0.5);
+    border-radius: 10px;
+    padding: 30px 26px 28px;
+    width: 280px;
+    text-align: center;
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+  /* dark overlay on card */
+  .ticket-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,8,4,0.78) 0%, rgba(18,12,4,0.88) 100%);
+    border-radius: 10px;
+    z-index: 0;
+    transition: background 0.35s;
+  }
+  .ticket-card:hover::after {
+    background: linear-gradient(180deg, rgba(18,14,4,0.72) 0%, rgba(28,20,4,0.82) 100%);
+  }
+  .ticket-card > * { position: relative; z-index: 1; }
+
+  .ticket-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(201,168,76,0.25), 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .ticket-card.featured {
+    border-color: rgba(201,168,76,0.75);
+    box-shadow: 0 0 22px rgba(201,168,76,0.18), 0 10px 40px rgba(0,0,0,0.5);
+  }
+
+  /* top badge like screenshot */
+  .ticket-badge-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6px;
+  }
+  .ticket-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6B4E0A, #C9A84C, #A07820);
+    color: #1A0E00;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding: 6px 24px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    border: 1px solid rgba(232,201,122,0.4);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,235,150,0.2);
+  }
+
+  .ticket-icon-img {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 6px;
+  }
+  .ticket-icon-img img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(201,168,76,0.4));
+  }
+
+  .ticket-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 18px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+
+  .ticket-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 20px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 14px;
+  }
+  .ticket-features li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--cream);
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
+  }
+  .ticket-features li::before {
+    content: '✓';
+    color: var(--gold-light);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ticket-price {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+    text-shadow: 0 0 20px rgba(201,168,76,0.3);
+  }
+
+  .ticket-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.6);
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-transform: uppercase;
+  }
+  .ticket-btn:hover {
+    background: linear-gradient(135deg, #8B6914, #C9A84C);
+    color: #0A0800;
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    letter-spacing: 0.25em;
+  }
+
+  /* ===== CONTACT PAGE ===== */
+  #page-contact {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+  }
+  #page-contact.active { display: block; }
+
+  .contact-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,15,30,0.75) 0%, rgba(10,15,30,0.6) 50%, rgba(10,15,30,0.9) 100%),
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    z-index: 0;
+  }
+
+  .contact-content {
+    position: relative;
+    z-index: 10;
+    padding: 120px 40px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    text-align: left;
+  }
+  .map-container {
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    min-height: 420px;
+  }
+  .map-container iframe {
+    width: 100%; height: 100%; min-height: 420px;
+    border: none; display: block;
+    filter: sepia(20%) saturate(1.1) brightness(0.85);
+  }
+  @media(max-width:768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .contact-form {
+    background: rgba(10,15,30,0.85);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 30px;
+    text-align: left;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: var(--cream);
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea { height: 120px; resize: vertical; }
+
+  .form-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #8B6914, #C9A84C);
+    color: var(--navy);
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  .form-submit:hover {
+    background: linear-gradient(135deg, #C9A84C, #E8C97A);
+    box-shadow: 0 6px 25px rgba(201,168,76,0.4);
+  }
+
+  /* ===== FAQ PAGE ===== */
+  #page-faq {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+  }
+  #page-faq.active { display: block; }
+
+  .faq-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,15,30,0.75) 0%, rgba(10,15,30,0.6) 50%, rgba(10,15,30,0.9) 100%),
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    z-index: 0;
+  }
+
+  .faq-content {
+    position: relative;
+    z-index: 10;
+    padding: 120px 40px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: rgba(10,15,30,0.82);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .faq-item:hover { border-color: rgba(201,168,76,0.5); }
+
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+    user-select: none;
+  }
+  .faq-q span { transition: transform 0.25s; }
+  .faq-item.open .faq-q span { transform: rotate(180deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .faq-item.open .faq-a { max-height: 300px; }
+  .faq-a-inner {
+    padding: 0 22px 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--cream);
+    line-height: 1.7;
+    opacity: 0.88;
+  }
+
+  /* GOLD DIVIDER */
+  .gold-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 30px;
+  }
+  .gold-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+  }
+  .gold-divider-dot {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(201,168,76,0.6);
+  }
+
+  /* SPARKLE EFFECT */
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+  .sparkle {
+    position: fixed;
+    width: 3px; height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 10px 14px; gap: 6px; }
+    .nav-logo { width: 50px; height: 50px; }
+    .nav-btn { font-size: 11px; padding: 7px 12px; }
+    .nav-cta { font-size: 11px; padding: 8px 14px; }
+    .apropos-grid { grid-template-columns: 1fr; }
+    .valeurs-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 80px; }
+    .timeline-time { width: 70px; font-size: 14px; }
+    .apropos-content, .programme-content, .billet-content, .contact-content, .faq-content {
+      padding: 100px 20px 40px;
+    }
+    .programme-img { float: none; width: 100%; margin: 0 0 20px 0; }
+  }
+
+  /* ===== RESERVATION MODAL ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,8,18,0.92);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal-box {
+    background:
+      linear-gradient(160deg, rgba(18,14,6,0.97), rgba(10,8,3,0.99)),
+      url('https://i.postimg.cc/pXvMVm51/Enlever-le-texte-de-cette-image-2k-delpmaspu-(1).jpg') center/cover no-repeat;
+    border: 1px solid rgba(201,168,76,0.45);
+    border-radius: 16px;
+    padding: 44px 40px;
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    box-shadow: 0 0 60px rgba(201,168,76,0.15), 0 30px 80px rgba(0,0,0,0.7);
+    animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.88) translateY(24px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 18px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .modal-close:hover { background: rgba(201,168,76,0.25); }
+
+  .modal-tier-badge {
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .modal-tier-badge span {
+    display: inline-block;
+    background: linear-gradient(135deg, #6B4E0A, #C9A84C, #A07820);
+    color: #1A0E00;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding: 5px 22px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .modal-price {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+  .modal-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+    margin-bottom: 22px;
+  }
+  .modal .form-group { margin-bottom: 16px; }
+  .modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .modal-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #8B6914, #C9A84C, #E8C97A);
+    color: #0A0800;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 8px;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+  }
+  .modal-submit:hover {
+    box-shadow: 0 6px 30px rgba(201,168,76,0.5);
+    transform: translateY(-1px);
+  }
+  .modal-success {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .modal-success .check-circle {
+    font-size: 56px;
+    margin-bottom: 14px;
+  }
+  .modal-success h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+  .modal-success p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--cream);
+    opacity: 0.85;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- SPARKLES -->
+<div class="sparkle" style="left:10%;top:20%;animation-delay:0s;"></div>
+<div class="sparkle" style="left:85%;top:35%;animation-delay:0.7s;"></div>
+<div class="sparkle" style="left:50%;top:15%;animation-delay:1.3s;"></div>
+<div class="sparkle" style="left:25%;top:70%;animation-delay:0.4s;"></div>
+<div class="sparkle" style="left:70%;top:60%;animation-delay:1.8s;"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://i.postimg.cc/0Q5Jqkd0/Capture-d-e-cran-le-2026-03-08-a-18-18-16.png" alt="Homme en Action" style="width:100%;height:100%;object-fit:contain;border-radius:14px;" />
+  </div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="showPage('accueil', this)">Accueil</button>
+    <button class="nav-btn" onclick="showPage('apropos', this)">À Propos</button>
+    <button class="nav-btn" onclick="showPage('programme', this)">Programme</button>
+    <button class="nav-btn" onclick="showPage('contact', this)">Contact</button>
+    <button class="nav-btn" onclick="showPage('faq', this)">FAQ</button>
+  </div>
+  <button class="nav-cta" onclick="showPage('billetterie', document.querySelector('.nav-btn[onclick*=billetterie]') || null)">Acheter un billet</button>
+</nav>
+
+<!-- ===== PAGE 1: ACCUEIL ===== -->
+<div id="page-accueil" class="page active">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-subtitle">• 20ᵉ Édition Caritative •</p>
+    <div class="hero-gala-word">Gala</div>
+    <div class="hero-title">Homme en Action 2026</div>
+    <div class="hero-edition">
+      <div class="hero-edition-line"></div>
+      <span>20ᵉ ÉDITION CARITATIVE</span>
+      <div class="hero-edition-line right"></div>
+    </div>
+    <div class="hero-tagline">Soutenir. Inspirer. Changer des vies.</div>
+    <div class="countdown">
+      <span class="num" id="cd-days">114</span><span class="label">JOURS</span>
+      <span class="sep">:</span>
+      <span class="num" id="cd-hours">08</span><span class="label">HEURES</span>
+      <span class="sep">:</span>
+      <span class="num" id="cd-mins">21</span><span class="label">MINUTES</span>
+      <span class="sep">:</span>
+      <span class="num" id="cd-secs">45</span><span class="label">SECONDES</span>
+    </div>
+    <button class="hero-cta" onclick="showPage('billetterie', null)">ACHETER UN BILLET</button>
+  </div>
+  <div class="hero-cards">
+    <div class="hero-card" onclick="showPage('programme', null)">
+      <div class="hero-card-icon">📅</div>
+      <div>
+        <h3>Programme de la Soirée</h3>
+        <p>Découvrez le déroulement de la soirée</p>
+      </div>
+    </div>
+    <div class="hero-card" onclick="showPage('billetterie', null)">
+      <div class="hero-card-icon">🎟️</div>
+      <div>
+        <h3>Billetterie</h3>
+        <p>Réservez vos billets dès maintenant</p>
+      </div>
+    </div>
+    <div class="hero-card" onclick="showPage('contact', null)">
+      <div class="hero-card-icon">✉️</div>
+      <div>
+        <h3>Nous Contacter</h3>
+        <p>Contactez notre équipe</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;z-index:10;width:100%;max-width:900px;margin:0 auto;padding:0 20px 30px;">
+    <h2 class="section-title-gold" style="text-align:center;margin-bottom:14px;">Nos Partenaires</h2>
+    <div class="partner-banner"><img src="https://i.postimg.cc/Mpjz4116/Capture-d-e-cran-le-2026-03-09-a-13-40-53.png" alt="Nos Partenaires" /></div>
+  </div>
+</div>
+
+<!-- ===== PAGE 2: À PROPOS ===== -->
+<div id="page-apropos" class="page">
+  <div class="apropos-bg"></div>
+  <div class="apropos-content">
+    <h1 class="page-title">À Propos de Gala Homme en Action</h1>
+
+    <div class="apropos-grid">
+      <div class="apropos-text">
+        Le <strong>Gala Homme en Action</strong> est né d'une vision claire : célébrer les hommes d'exception qui, par leur engagement et leur leadership, façonnent positivement notre société. Notre mission est de mettre en lumière des modèles de réussite dont les parcours inspirants et les initiatives créent un impact réel et durable dans leurs communautés. Nous œuvrons pour un avenir où l'engagement communautaire est valorisé et où chacun peut devenir un acteur du changement. Nous sommes fiers de notre histoire et de notre communauté grandissante.
+      </div>
+      <div class="apropos-img-wrap">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80" alt="Célébrer l'engagement à travers les générations" />
+        <div class="apropos-img-caption">Célébrer l'engagement à travers les générations.</div>
+      </div>
+    </div>
+
+    <div class="gold-divider">
+      <div class="gold-divider-line"></div>
+      <div class="gold-divider-dot"></div>
+      <div class="gold-divider-line"></div>
+    </div>
+
+    <h2 class="section-title-gold">Nos Valeurs Fondamentales</h2>
+    <div class="valeurs-grid">
+      <div class="valeur-item">
+        <div class="valeur-icon">🤝</div>
+        <p><strong>Engagement Authentique:</strong><br>Soutenir des actions concrètes et impactantes.</p>
+      </div>
+      <div class="valeur-item">
+        <div class="valeur-icon">👥</div>
+        <p><strong>Communauté Unie:</strong> Favoriser la collaboration et le partage.</p>
+      </div>
+      <div class="valeur-item">
+        <div class="valeur-icon">🧭</div>
+        <p><strong>Leadership Éthique:</strong> Incarner l'intégrité et l'excellence.</p>
+      </div>
+      <div class="valeur-item">
+        <div class="valeur-icon">🌿</div>
+        <p><strong>Impact Durable:</strong><br>Créer des changements positifs à long terme.</p>
+      </div>
+    </div>
+
+    <div class="gold-divider">
+      <div class="gold-divider-line"></div>
+      <div class="gold-divider-dot"></div>
+      <div class="gold-divider-line"></div>
+    </div>
+
+        <div class="partenaires-section">
+      <h2 class="section-title-gold">Nos Partenaires</h2>
+      <div class="partner-banner"><img src="https://i.postimg.cc/Mpjz4116/Capture-d-e-cran-le-2026-03-09-a-13-40-53.png" alt="Nos Partenaires" /></div>
+    </div>
+    </div>
+  </div>
+  <div class="footer-bar">© 2026 Gala Homme en Action - Tous droits réservés | Politique de Confidentialité | Mentions Légales</div>
+</div>
+
+<!-- ===== PAGE 3: PROGRAMME ===== -->
+<div id="page-programme" class="page">
+  <div class="programme-bg"></div>
+  <div class="programme-content">
+    <h1 class="page-title">Programme de la Soirée</h1>
+
+    <div class="programme-img">
+      <img src="https://plus.unsplash.com/premium_photo-1661443674172-15f33621f039?w=600&q=80" alt="Soirée de gala" />
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">18h30</div>
+        <div class="timeline-dash"><div class="timeline-dot"></div></div>
+        <div class="timeline-body">
+          <div class="timeline-event-title">Cocktail de bienvenue</div>
+          <div class="timeline-event-desc">Accueil des invités avec un cocktail raffiné et des opportunités de réseautage.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">19h30</div>
+        <div class="timeline-dash"><div class="timeline-dot"></div></div>
+        <div class="timeline-body">
+          <div class="timeline-event-title">Dîner gastronomique</div>
+          <div class="timeline-event-desc">Un diner gastronomique élaboré, servi dans une atmosphère élégante.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">21h00</div>
+        <div class="timeline-dash"><div class="timeline-dot"></div></div>
+        <div class="timeline-body">
+          <div class="timeline-event-title">Témoignages inspirants</div>
+          <div class="timeline-event-desc">Interventions de leaders engagés partageant leurs expériences et visions pour un impact positif.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">22h00</div>
+        <div class="timeline-dash"><div class="timeline-dot"></div></div>
+        <div class="timeline-body">
+          <div class="timeline-event-title">Remise de prix et reconnaissance</div>
+          <div class="timeline-event-desc">Cérémonie honorant des personnalités exceptionnelles pour leur contribution à la communauté.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">22h30</div>
+        <div class="timeline-dash"><div class="timeline-dot"></div></div>
+        <div class="timeline-body">
+          <div class="timeline-event-title">Animation musicale et réseautage</div>
+          <div class="timeline-event-desc">Moments de convivialité avec de la musique live et opportunités de réseautage entre invités.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gold-divider">
+      <div class="gold-divider-line"></div>
+      <div class="gold-divider-dot"></div>
+      <div class="gold-divider-line"></div>
+    </div>
+
+        <div class="partenaires-section">
+      <h2 class="section-title-gold">Nos Partenaires</h2>
+      <div class="partner-banner"><img src="https://i.postimg.cc/Mpjz4116/Capture-d-e-cran-le-2026-03-09-a-13-40-53.png" alt="Nos Partenaires" /></div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 4: BILLETTERIE ===== -->
+<div id="page-billetterie" class="page">
+  <div class="billet-bg"></div>
+  <div class="billet-content">
+    <h1 class="page-title">Billetterie</h1>
+    <p class="billet-subtitle">Réservez vos places pour le Gala Homme en Action 2026</p>
+
+    <div class="mini-countdown">
+      <div class="mini-cd-block">
+        <span class="mini-cd-num" id="mcd-days">114</span>
+        <span class="mini-cd-label">JOURS</span>
+      </div>
+      <div class="mini-cd-block">
+        <span class="mini-cd-num" id="mcd-hours">07</span>
+        <span class="mini-cd-label">HEURES</span>
+      </div>
+      <div class="mini-cd-block">
+        <span class="mini-cd-num" id="mcd-mins">10</span>
+        <span class="mini-cd-label">MINUTES</span>
+      </div>
+      <div class="mini-cd-block">
+        <span class="mini-cd-num" id="mcd-secs">38</span>
+        <span class="mini-cd-label">SECONDES</span>
+      </div>
+    </div>
+
+    <div class="tickets-grid">
+      <!-- OR -->
+      <div class="ticket-card">
+        <div class="ticket-badge-wrap"><div class="ticket-badge">OR</div></div>
+        <div class="ticket-icon-img"><img src="https://i.postimg.cc/MZbqJWcM/or.png" alt="Or" /></div>
+        <div class="ticket-name">Or</div>
+        <ul class="ticket-features">
+          <li>Cocktail de bienvenue</li>
+          <li>Dîner gastronomique</li>
+          <li>Accès à la cérémonie de remise de prix</li>
+          <li>Place standard</li>
+        </ul>
+        <div class="ticket-price">150 CAD</div>
+        <button class="ticket-btn" onclick="openModal('or')">RÉSERVER</button>
+      </div>
+      <!-- PLATINE -->
+      <div class="ticket-card featured">
+        <div class="ticket-badge-wrap"><div class="ticket-badge">PLATINE</div></div>
+        <div class="ticket-icon-img"><img src="https://i.postimg.cc/Y2fMBp44/platine.png" alt="Platine" /></div>
+        <div class="ticket-name">Platine</div>
+        <ul class="ticket-features">
+          <li>Cocktail de bienvenue</li>
+          <li>Dîner gastronomique</li>
+          <li>Place privilégiée proche de la scène</li>
+          <li>1 Table photo souvenir</li>
+        </ul>
+        <div class="ticket-price">250 CAD</div>
+        <button class="ticket-btn" onclick="openModal('platine')">RÉSERVER</button>
+      </div>
+      <!-- PRESTIGE -->
+      <div class="ticket-card">
+        <div class="ticket-badge-wrap"><div class="ticket-badge">PRESTIGE</div></div>
+        <div class="ticket-icon-img"><img src="https://i.postimg.cc/kMFqPnVt/diamon.png" alt="Prestige" /></div>
+        <div class="ticket-name">Prestige</div>
+        <ul class="ticket-features">
+          <li>Tout les avantages</li>
+          <li>Dîner gastronomique</li>
+          <li>Place privilégiée proche de la scène</li>
+          <li>1 Table photo souvenir</li>
+        </ul>
+        <div class="ticket-price">500 CAD</div>
+        <button class="ticket-btn" onclick="openModal('prestige')">RÉSERVER</button>
+      </div>
+    </div>
+
+        <div class="partenaires-section">
+      <h2 class="section-title-gold">Nos Partenaires</h2>
+      <div class="partner-banner"><img src="https://i.postimg.cc/Mpjz4116/Capture-d-e-cran-le-2026-03-09-a-13-40-53.png" alt="Nos Partenaires" /></div>
+    </div>
+    </div>
+  </div>
+  <div class="footer-bar">© 2026 Gala Homme en Action - Tous droits réservés | Politique de Confidentialité</div>
+</div>
+
+<!-- ===== PAGE: CONTACT ===== -->
+<div id="page-contact" class="page">
+  <div class="contact-bg"></div>
+  <div class="contact-content">
+    <h1 class="page-title">Contact</h1>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--cream);opacity:0.85;margin-bottom:4px;">
+      Notre équipe est à votre disposition pour toute question concernant le Gala Homme en Action 2026.
+    </p>
+    <div class="contact-grid">
+      <!-- FORM -->
+      <div class="contact-form" style="margin-top:0;">
+        <div class="form-group">
+          <label>Nom complet</label>
+          <input type="text" placeholder="Votre nom" />
+        </div>
+        <div class="form-group">
+          <label>Adresse courriel</label>
+          <input type="email" placeholder="votre@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Sujet</label>
+          <input type="text" placeholder="Objet de votre message" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Votre message..."></textarea>
+        </div>
+        <button class="form-submit">Envoyer le message</button>
+      </div>
+      <!-- MAP -->
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89543.82313837!2d-73.75!3d45.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc923a5f7f91b8f%3A0x9a49e3e4cb79fcdb!2sLaval%2C+QC!5e0!3m2!1sfr!2sca!4v1700000000000"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+    <div style="position:relative;z-index:10;width:100%;max-width:900px;margin:0 auto;padding:0 20px 30px;">
+      <div class="section-title-gold" style="text-align:center;margin-bottom:14px;font-family:'Cinzel',serif;font-size:20px;color:#E8C97A;">Nos Partenaires</div>
+      <div class="partner-banner"><img src="https://i.postimg.cc/Mpjz4116/Capture-d-e-cran-le-2026-03-09-a-13-40-53.png" alt="Nos Partenaires" /></div>
+    </div>
+  <div class="footer-bar">© 2026 Gala Homme en Action - Tous droits réservés | Politique de Confidentialité | Mentions Légales</div>
+</div>
+
+<!-- ===== PAGE: FAQ ===== -->
+<div id="page-faq" class="page">
+  <div class="faq-bg"></div>
+  <div class="faq-content">
+    <h1 class="page-title">FAQ</h1>
+
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Quand aura lieu le Gala Homme en Action 2026 ?
+        <span>▼</span>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Le Gala Homme en Action 2026 se tiendra dans les prochains mois. Les détails précis concernant la date et le lieu seront annoncés prochainement. Consultez le compte à rebours sur la page d'accueil pour suivre le temps restant.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Comment puis-je acheter des billets ?
+        <span>▼</span>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Vous pouvez réserver vos billets directement via notre page Billetterie. Nous proposons trois formules : Or (150 CAD), Platine (250 CAD) et Prestige (500 CAD). Chaque formule comprend différents avantages pour une expérience personnalisée.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Quels sont les avantages du billet Prestige ?
+        <span>▼</span>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Le billet Prestige inclut tous les avantages des formules Or et Platine : cocktail de bienvenue, dîner gastronomique, place privilégiée proche de la scène, table photo souvenir, ainsi que des avantages exclusifs supplémentaires réservés aux détenteurs Prestige.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Le Gala est-il ouvert au grand public ?
+        <span>▼</span>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Oui, le Gala Homme en Action est ouvert à toute personne souhaitant soutenir notre mission et célébrer l'engagement communautaire. Les places étant limitées, nous vous encourageons à réserver rapidement.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Comment devenir partenaire du Gala ?
+        <span>▼</span>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Pour devenir partenaire du Gala Homme en Action 2026, veuillez nous contacter via la page Contact. Notre équipe vous présentera les différentes formules de partenariat disponibles et les avantages associés.</div>
+      </div>
+    </div>
+  </div>
+
+    <div style="position:relative;z-index:10;width:100%;max-width:900px;margin:0 auto;padding:0 20px 30px;">
+      <div class="section-title-gold" style="text-align:center;margin-bottom:14px;font-family:'Cinzel',serif;font-size:20px;color:#E8C97A;">Nos Partenaires</div>
+      <div class="partner-banner"><img src="https://i.postimg.cc/Mpjz4116/Capture-d-e-cran-le-2026-03-09-a-13-40-53.png" alt="Nos Partenaires" /></div>
+    </div>
+  <div class="footer-bar">© 2026 Gala Homme en Action - Tous droits réservés | Politique de Confidentialité | Mentions Légales</div>
+</div>
+
+<script>
+  // ===== NAVIGATION =====
+  function showPage(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    const page = document.getElementById('page-' + id);
+    if (page) page.classList.add('active');
+    if (btn) btn.classList.add('active');
+    else {
+      document.querySelectorAll('.nav-btn').forEach(b => {
+        if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(id)) b.classList.add('active');
+      });
+    }
+    window.scrollTo(0, 0);
+  }
+
+  // ===== COUNTDOWN =====
+  function updateCountdown() {
+    // Target: ~114 days from March 5 2026
+    const target = new Date('2026-06-28T18:30:00');
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) return;
+
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+
+    const pad = n => String(n).padStart(2, '0');
+
+    const fields = [
+      ['cd-days', days], ['cd-hours', pad(hours)], ['cd-mins', pad(mins)], ['cd-secs', pad(secs)],
+      ['mcd-days', days], ['mcd-hours', pad(hours)], ['mcd-mins', pad(mins)], ['mcd-secs', pad(secs)]
+    ];
+    fields.forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    });
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ===== FAQ TOGGLE =====
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+
+  // ===== RESERVATION MODAL =====
+  const tierData = {
+    or:       { label: 'OR',      name: 'Or',      price: 150 },
+    platine:  { label: 'PLATINE', name: 'Platine', price: 250 },
+    prestige: { label: 'PRESTIGE',name: 'Prestige',price: 500 }
+  };
+  let currentTier = 'or';
+
+  function openModal(tier) {
+    currentTier = tier;
+    const t = tierData[tier];
+    document.getElementById('modalTierLabel').textContent = t.label;
+    document.getElementById('modalTierName').textContent  = t.name;
+    document.getElementById('modalTierPrice').textContent = t.price + ' CAD / billet';
+    document.getElementById('res-qty').value = 1;
+    document.getElementById('res-total').value = t.price + ' CAD';
+    document.getElementById('modalForm').style.display = 'block';
+    document.getElementById('modalSuccess').style.display = 'none';
+    document.getElementById('reservationModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('reservationModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click
+  document.getElementById('reservationModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Live total update
+  document.addEventListener('input', function(e) {
+    if (e.target.id === 'res-qty') {
+      const qty = parseInt(e.target.value) || 1;
+      const price = tierData[currentTier].price;
+      document.getElementById('res-total').value = (qty * price) + ' CAD';
+    }
+  });
+
+  function submitReservation() {
+    const prenom = document.getElementById('res-prenom').value.trim();
+    const nom    = document.getElementById('res-nom').value.trim();
+    const email  = document.getElementById('res-email').value.trim();
+    if (!prenom || !nom || !email) {
+      alert('Veuillez remplir les champs obligatoires.');
+      return;
+    }
+    const qty   = document.getElementById('res-qty').value;
+    const total = document.getElementById('res-total').value;
+    const tier  = tierData[currentTier].name;
+    document.getElementById('successSummary').textContent =
+      prenom + ' ' + nom + ' — ' + qty + ' billet(s) ' + tier + ' · ' + total;
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+  }
+</script>
+
+<!-- ===== RESERVATION MODAL ===== -->
+<div class="modal-overlay" id="reservationModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <!-- Form view -->
+    <div id="modalForm">
+      <div class="modal-tier-badge"><span id="modalTierLabel">OR</span></div>
+      <div class="modal-title" id="modalTierName">Or</div>
+      <div class="modal-price" id="modalTierPrice">150 CAD</div>
+      <div class="modal-divider"></div>
+      <div class="modal-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" placeholder="Jean" id="res-prenom" />
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" placeholder="Tremblay" id="res-nom" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Adresse courriel</label>
+        <input type="email" placeholder="jean@email.com" id="res-email" />
+      </div>
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input type="tel" placeholder="+1 (514) 000-0000" id="res-tel" />
+      </div>
+      <div class="modal-row">
+        <div class="form-group">
+          <label>Nombre de billets</label>
+          <input type="number" min="1" max="10" value="1" id="res-qty" />
+        </div>
+        <div class="form-group">
+          <label>Total estimé</label>
+          <input type="text" id="res-total" readonly style="opacity:0.7;cursor:default;" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Restrictions alimentaires (optionnel)</label>
+        <input type="text" placeholder="Végétarien, allergies..." id="res-diet" />
+      </div>
+      <button class="modal-submit" onclick="submitReservation()">Confirmer la réservation</button>
+    </div>
+    <!-- Success view -->
+    <div class="modal-success" id="modalSuccess">
+      <div class="check-circle">✅</div>
+      <h3>Réservation confirmée !</h3>
+      <p>Merci pour votre réservation.<br>Un courriel de confirmation vous sera envoyé sous peu.<br><br><em id="successSummary"></em></p>
+      <button class="modal-submit" style="margin-top:20px;" onclick="closeModal()">Fermer</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
